@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nick's Bistro | Authentic Greek & Mediterranean Dining | Forest Hills, NY</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        aegean: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            600: '#0284c7',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            deep: '#0a2540',
+                            greek: '#0D5C96'
+                        },
+                        terracotta: '#D96B43',
+                        warmSand: '#FBF8F3',
+                        goldLeaf: '#C5A059',
+                        oliveGreen: '#5B6E4E',
+                        darkMarble: '#121619'
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .greek-meander-pattern {
+            background-color: #0D5C96;
+            background-image: radial-gradient(#C5A059 0.75px, transparent 0.75px), radial-gradient(#C5A059 0.75px, #0D5C96 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0,15px 15px;
+            opacity: 0.95;
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(10, 37, 64, 0.75) 0%, rgba(18, 22, 25, 0.88) 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .glass-dark {
+            background: rgba(18, 22, 25, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+        }
+        .gold-border-glow {
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.25);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FBF8F3;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0D5C96;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-warmSand text-gray-800 font-sans antialiased flex flex-col min-h-screen selection:bg-aegean-greek selection:text-white">
+
+    <!-- Web Manager Pitch Banner (Removable tool bar for presenting to Mario & Alfred) -->
+    <div id="pitch-banner" class="bg-gradient-to-r from-aegean-deep via-aegean-900 to-aegean-greek text-white py-2 px-4 text-xs md:text-sm border-b border-goldLeaf/30 sticky top-0 z-50 flex justify-between items-center">
+        <div class="flex items-center space-x-2">
+            <span class="bg-goldLeaf text-darkMarble px-2 py-0.5 rounded font-bold uppercase text-[10px] tracking-wider">Client Pitch Mode</span>
+            <span>Created for <strong>Mario & Alfred</strong> at Nick's Bistro</span>
+        </div>
+        <div class="flex items-center space-x-4">
+            <button onclick="togglePitchDetails()" class="underline hover:text-goldLeaf transition text-xs">Why this design converts better <i class="fas font-solid fa-chevron-down ml-1"></i></button>
+            <button onclick="document.getElementById('pitch-banner').remove()" class="text-gray-400 hover:text-white"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
+    <!-- Pitch Details Drawer (Hidden by default) -->
+    <div id="pitch-details" class="hidden bg-darkMarble text-warmSand border-b border-goldLeaf/40 p-4 text-sm z-40">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-3 bg-white/5 rounded-lg border border-white/10">
+                <h4 class="font-bold text-goldLeaf mb-1"><i class="fas fa-rocket mr-2"></i> Instant Reservations</h4>
+                <p class="text-xs text-gray-300">Direct modal booking reduces drop-off compared to external third-party links.</p>
+            </div>
+            <div class="p-3 bg-white/5 rounded-lg border border-white/10">
+                <h4 class="font-bold text-goldLeaf mb-1"><i class="fas fa-utensils mr-2"></i> Interactive Menu</h4>
+                <p class="text-xs text-gray-300">Fast, visual categories (Souvlaki, Seafood, Brunch) with dietary tags for modern diners.</p>
+            </div>
+            <div class="p-3 bg-white/5 rounded-lg border border-white/10">
+                <h4 class="font-bold text-goldLeaf mb-1"><i class="fas fa-calculator mr-2"></i> Party & Catering Estimator</h4>
+                <p class="text-xs text-gray-300">Instant catering cost calculator captures high-value private event leads automatically.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 bg-white/95 backdrop-blur-md border-b border-gray-200/80 z-30 transition-all duration-300 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo & Greek Emblem -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-11 h-11 rounded-full bg-aegean-greek flex items-center justify-center text-white shadow-md group-hover:scale-105 transition border-2 border-goldLeaf">
+                        <i class="fas fa-monument text-lg text-goldLeaf"></i>
+                    </div>
+                    <div>
+                        <span class="font-cinzel text-2xl font-extrabold tracking-wider text-aegean-deep block leading-none">NICK'S</span>
+                        <div class="flex items-center space-x-1 mt-0.5">
+                            <span class="text-xs tracking-[0.2em] font-medium text-terracotta uppercase">Bistro</span>
+                            <span class="text-[10px] text-goldLeaf">•</span>
+                            <span class="text-[10px] text-gray-500 uppercase tracking-widest">Forest Hills</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wide">
+                    <a href="#about" class="text-gray-700 hover:text-aegean-greek transition">Our Story</a>
+                    <a href="#menu" class="text-gray-700 hover:text-aegean-greek transition">Menu & Drinks</a>
+                    <a href="#catering" class="text-gray-700 hover:text-aegean-greek transition">Catering & Parties</a>
+                    <a href="#reviews" class="text-gray-700 hover:text-aegean-greek transition">Reviews</a>
+                    <a href="#contact" class="text-gray-700 hover:text-aegean-greek transition">Hours & Location</a>
+                </nav>
+
+                <!-- Call to Action Buttons -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="tel:7185446425" class="text-xs text-aegean-deep font-bold flex items-center hover:text-terracotta transition">
+                        <i class="fas fa-phone-alt text-goldLeaf mr-2"></i> (718) 544-6425
+                    </a>
+                    <button onclick="openModal('reservation-modal')" class="bg-aegean-greek hover:bg-aegean-900 text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 flex items-center space-x-2 border border-goldLeaf/30">
+                        <i class="fas fa-calendar-check text-goldLeaf"></i>
+                        <span>Reserve Table</span>
+                    </button>
+                    <a href="#order" class="bg-terracotta hover:bg-amber-700 text-white font-semibold text-sm px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5">
+                        Order Online
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-gray-700 hover:text-aegean-greek hover:bg-gray-100 focus:outline-none">
+                    <i class="fas fa-bars text-xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-gray-200 bg-white px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-aegean-50 hover:text-aegean-greek">Our Story</a>
+            <a href="#menu" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-aegean-50 hover:text-aegean-greek">Menu & Drinks</a>
+            <a href="#catering" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-aegean-50 hover:text-aegean-greek">Catering & Parties</a>
+            <a href="#reviews" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-aegean-50 hover:text-aegean-greek">Reviews</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-aegean-50 hover:text-aegean-greek">Hours & Location</a>
+            <div class="pt-4 border-t border-gray-100 flex flex-col space-y-3">
+                <button onclick="toggleMobileMenu(); openModal('reservation-modal')" class="w-full bg-aegean-greek text-white font-semibold py-3 rounded-xl shadow text-center flex justify-center items-center space-x-2">
+                    <i class="fas fa-calendar-check text-goldLeaf"></i>
+                    <span>Reserve a Table</span>
+                </button>
+                <a href="#order" onclick="toggleMobileMenu()" class="w-full bg-terracotta text-white font-semibold py-3 rounded-xl shadow text-center block">
+                    Order Pickup & Delivery
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[90vh] flex items-center justify-center bg-darkMarble text-white overflow-hidden">
+        <!-- Background Image with Soft Parallax & Vignette -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=2000&q=80" alt="Mediterranean Feast at Nick's Bistro" class="w-full h-full object-cover object-center opacity-40 scale-105 animate-pulse" style="animation-duration: 12s;">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <!-- Greek Motif Subtle Top Bar Decor -->
+        <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-aegean-greek via-goldLeaf to-terracotta"></div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center py-20">
+            <!-- Badge -->
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-goldLeaf/40 mb-6 text-goldLeaf text-xs sm:text-sm font-medium tracking-wide">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                <span>Authentic Greek-American Bistro • Forest Hills, NY</span>
+            </div>
+
+            <h1 class="font-cinzel text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6 text-white leading-tight">
+                Warm Mediterranean Passion. <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-goldLeaf via-white to-goldLeaf font-serif italic">Unforgettable Greek Flavors.</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Welcome to Nick's Bistro—where Mario & Alfred combine traditional family recipes with modern neighborhood elegance. Famous for our legendary lemon potatoes, char-grilled octopus, & homemade baklava.
+            </p>
+
+            <!-- CTA Button Group -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                <button onclick="openModal('reservation-modal')" class="w-full sm:w-auto bg-aegean-greek hover:bg-aegean-800 text-white px-8 py-4 rounded-full font-bold text-base shadow-xl hover:shadow-2xl hover:scale-105 transition duration-300 border border-goldLeaf/40 flex items-center justify-center space-x-3">
+                    <i class="fas fa-utensils text-goldLeaf"></i>
+                    <span>Book Your Table</span>
+                </button>
+                <a href="#menu" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white backdrop-blur-md px-8 py-4 rounded-full font-bold text-base border border-white/30 hover:border-white transition duration-300 flex items-center justify-center space-x-2">
+                    <span>Explore Our Menu</span>
+                    <i class="fas fa-arrow-right text-xs text-goldLeaf"></i>
+                </a>
+            </div>
+
+            <!-- Quick Trust Indicators -->
+            <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 border-t border-white/10 pt-8 max-w-4xl mx-auto">
+                <div class="text-center">
+                    <span class="block font-cinzel text-2xl font-bold text-goldLeaf">4.8 ★</span>
+                    <span class="text-xs text-gray-400">Yelp & Google Rating</span>
+                </div>
+                <div class="text-center">
+                    <span class="block font-cinzel text-2xl font-bold text-goldLeaf">100%</span>
+                    <span class="text-xs text-gray-400">Fresh Extra Virgin Olive Oil</span>
+                </div>
+                <div class="text-center">
+                    <span class="block font-cinzel text-2xl font-bold text-goldLeaf">Private Parties</span>
+                    <span class="text-xs text-gray-400">Up to 75 Guests</span>
+                </div>
+                <div class="text-center">
+                    <span class="block font-cinzel text-2xl font-bold text-goldLeaf">Metropolitan Ave</span>
+                    <span class="text-xs text-gray-400">Forest Hills Destination</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Decorative Bottom Curve -->
+        <div class="absolute bottom-0 inset-x-0 h-10 bg-warmSand" style="clip-path: polygon(0 100%, 100% 100%, 100% 0);"></div>
+    </section>
+
+    <!-- OUR STORY / OWNERS SECTION -->
+    <section id="about" class="py-20 bg-warmSand relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Image Collage -->
+                <div class="relative">
+                    <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80" alt="Inside Nick's Bistro Atmosphere" class="w-full h-[420px] object-cover">
+                    </div>
+                    <!-- Secondary Accent Image -->
+                    <div class="absolute -bottom-8 -right-6 w-3/5 z-20 rounded-2xl overflow-hidden shadow-2xl border-4 border-white hidden sm:block">
+                        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80" alt="Wine and Greek Mezze" class="w-full h-[220px] object-cover">
+                    </div>
+                    <!-- Decorative Greek Motif Card -->
+                    <div class="absolute -top-6 -left-6 bg-aegean-greek text-white p-6 rounded-2xl shadow-xl z-20 border border-goldLeaf max-w-[200px]">
+                        <i class="fas fa-quote-left text-goldLeaf text-2xl mb-2"></i>
+                        <p class="text-xs font-serif italic">"Good food, no compromises. Feel right at home."</p>
+                    </div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="lg:pl-8">
+                    <div class="inline-flex items-center space-x-2 text-terracotta font-bold text-sm tracking-widest uppercase mb-3">
+                        <i class="fas fa-heart"></i>
+                        <span>Welcome to Our Table</span>
+                    </div>
+                    <h2 class="font-cinzel text-3xl sm:text-4xl font-extrabold text-aegean-deep mb-6 leading-tight">
+                        A Neighborhood Greek Bistro Built on Passion & Family
+                    </h2>
+                    <p class="text-gray-700 text-base leading-relaxed mb-6">
+                        Founded by long-time friends and restaurateurs <strong>Mario and Alfred</strong>, Nick’s Bistro was created with a clear vision: to bring authentic Greek-American cooking into an elegant, warm, and contemporary neighborhood setting right here in Forest Hills.
+                    </p>
+                    <p class="text-gray-600 text-base leading-relaxed mb-8">
+                        Whether you are stopping by for lunch, cozying up for a candlelit seafood dinner with fine Greek wines, or celebrating a family milestone in our private party space, our goal is to treat you like family from the moment you step through our doors.
+                    </p>
+
+                    <!-- Features Checklist -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-aegean-50 flex items-center justify-center text-aegean-greek flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Legendary Lemon Potatoes</h4>
+                                <p class="text-xs text-gray-500">Slow roasted with oregano, garlic, & olive oil.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-aegean-50 flex items-center justify-center text-aegean-greek flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Full Premium Bar</h4>
+                                <p class="text-xs text-gray-500">Craft cocktails, Greek spirits, & imported wines.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-aegean-50 flex items-center justify-center text-aegean-greek flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Outdoor Patio Dining</h4>
+                                <p class="text-xs text-gray-500">Enjoy Metropolitan Avenue breezes on sunny days.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-8 h-8 rounded-full bg-aegean-50 flex items-center justify-center text-aegean-greek flex-shrink-0 mt-1">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-sm">Full Service Catering</h4>
+                                <p class="text-xs text-gray-500">Custom packages for birthdays, weddings, & corporate.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 border-t border-gray-200/60 flex items-center space-x-6">
+                        <div>
+                            <span class="font-serif italic text-lg font-bold text-aegean-deep block">Mario & Alfred</span>
+                            <span class="text-xs text-gray-500 uppercase tracking-wider">Owners & Hosts</span>
+                        </div>
+                        <div class="h-8 w-px bg-gray-300"></div>
+                        <a href="#contact" class="text-aegean-greek font-bold text-sm hover:text-terracotta transition flex items-center">
+                            Visit Us Today <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE MENU SECTION -->
+    <section id="menu" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-terracotta font-bold text-sm tracking-widest uppercase">Fresh • Authentic • Mediterranean</span>
+                <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold text-aegean-deep mt-2 mb-4">Our Culinary Highlights</h2>
+                <p class="text-gray-600 text-base">Explore a selection of our most loved Greek specialties, fresh seafood, and bistro classics. All prepared with imported olive oil and herbs.</p>
+            </div>
+
+            <!-- Menu Category Navigation Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12" id="menu-tabs">
+                <button onclick="filterMenu('starters')" class="menu-tab active px-5 py-2.5 rounded-full text-sm font-bold bg-aegean-greek text-white shadow-md transition border border-goldLeaf/30" data-cat="starters">
+                    <i class="fas fa-pepper-hot mr-1.5"></i> Greek Mezze & Starters
+                </button>
+                <button onclick="filterMenu('mains')" class="menu-tab px-5 py-2.5 rounded-full text-sm font-bold bg-gray-100 text-gray-700 hover:bg-gray-200 transition" data-cat="mains">
+                    <i class="fas fa-drumstick-bite mr-1.5"></i> Souvlaki & Mains
+                </button>
+                <button onclick="filterMenu('seafood')" class="menu-tab px-5 py-2.5 rounded-full text-sm font-bold bg-gray-100 text-gray-700 hover:bg-gray-200 transition" data-cat="seafood">
+                    <i class="fas fa-fish mr-1.5"></i> Fresh Seafood
+                </button>
+                <button onclick="filterMenu('desserts')" class="menu-tab px-5 py-2.5 rounded-full text-sm font-bold bg-gray-100 text-gray-700 hover:bg-gray-200 transition" data-cat="desserts">
+                    <i class="fas fa-cookie-bite mr-1.5"></i> Desserts & Drinks
+                </button>
+            </div>
+
+            <!-- Menu Grid Container -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="menu-grid">
+                
+                <!-- STARTERS -->
+                <div class="menu-item starters bg-warmSand rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=600&q=80" alt="Char-Grilled Octopus" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                            <span class="absolute top-3 right-3 bg-aegean-greek text-white text-xs px-2.5 py-1 rounded-full font-bold shadow">Chef Special</span>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-cinzel text-xl font-bold text-aegean-deep">Char-Grilled Octopus</h3>
+                                <span class="font-bold text-terracotta text-lg">$24.95</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Sustainably caught octopus grilled over open flame, served over warm capers, chickpeas, red onion & olive oil balsamic reduction.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex justify-between items-center text-xs text-gray-500 border-t border-gray-200/60 mt-auto">
+                        <span class="text-emerald-700 font-semibold"><i class="fas fa-leaf mr-1"></i> Gluten Free</span>
+                        <button onclick="openModal('reservation-modal')" class="text-aegean-greek hover:underline font-bold">Order at Table</button>
+                    </div>
+                </div>
+
+                <div class="menu-item starters bg-warmSand rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" alt="Authentic Spreads & Warm Pita" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-cinzel text-xl font-bold text-aegean-deep">Trio of Greek Spreads</h3>
+                                <span class="font-bold text-terracotta text-lg">$16.50</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Tzatziki (cucumber garlic yogurt), Spicy Feta (Tirokafteri), and Hummus served with char-grilled pita bread.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex justify-between items-center text-xs text-gray-500 border-t border-gray-200/60 mt-auto">
+                        <span class="text-amber-700 font-semibold"><i class="fas fa-seedling mr-1"></i> Vegetarian</span>
+                        <button onclick="openModal('reservation-modal')" class="text-aegean-greek hover:underline font-bold">Order at Table</button>
+                    </div>
+                </div>
+
+                <div class="menu-item starters bg-warmSand rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=600&q=80" alt="Spanakopita" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-cinzel text-xl font-bold text-aegean-deep">Homemade Spanakopita</h3>
+                                <span class="font-bold text-terracotta text-lg">$13.95</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Crispy layered phyllo dough baked daily, stuffed with wild baby spinach, fresh dill, leeks, and crumbled Dodoni Greek feta.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex justify-between items-center text-xs text-gray-500 border-t border-gray-200/60 mt-auto">
+                        <span class="text-amber-700 font-semibold"><i class="fas fa-check-circle mr-1"></i> Family Recipe</span>
+                        <button onclick="openModal('reservation-modal')" class="text-aegean-greek hover:underline font-bold">Order at Table</button>
+                    </div>
+                </div>
+
+                <!-- MAINS -->
+                <div class="menu-item mains hidden bg-warmSand rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=600&q=80" alt="Souvlaki Platter" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-cinzel text-xl font-bold text-aegean-deep">Chicken Souvlaki Platter</h3>
+                                <span class="font-bold text-terracotta text-lg">$23.50</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Marinated organic chicken skewers grilled over hardwood charcoal. Served with warm pita tips, tzatziki, and legendary lemon potatoes.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex justify-between items-center text-xs text-gray-500 border-t border-gray-200/60 mt-auto">
+                        <span class="text-aegean-greek font-semibold"><i class="fas fa-fire mr-1"></i> Top Seller</span>
+                        <button onclick="openModal('reservation-modal')" class="text-aegean-greek hover:underline font-bold">Order at Table</button>
+                    </div>
+                </div>
+
+                <div class="menu-item mains hidden bg-warmSand rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Greek Lamb Chops" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-cinzel text-xl font-bold text-aegean-deep">Char-Grilled Lamb Chops</h3>
+                                <span class="font-bold text-terracotta text-lg">$36.00</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Prime rib-cut lamb chops rubbed with oregano, sea salt, and fresh lemon juice. Served with garlic roasted baby spinach & potatoes.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex justify-between items-center text-xs text-gray-500 border-t border-gray-200/60 mt-auto">
+                        <span class="text-emerald-700 font-semibold"><i class="fas fa-award mr-1"></i> Prime Cut</span>
+                        <button onclick="openModal('reservation-modal')" class="text-aegean-greek hover:underline font-bold">Order at Table</button>
+                    </div>
+                </div>
+
+                <div class="menu-item mains hidden bg-warmSand rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&w=600&q=80" alt="Classic Pastitsio" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-cinzel text-xl font-bold text-aegean-deep">Traditional Pastitsio</h3>
+                                <span class="font-bold text-terracotta text-lg">$22.00</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Greek lasagna baked with thick tubular pasta, seasoned ground sirloin, nutmeg, and topped with rich golden béchamel sauce.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex justify-between items-center text-xs text-gray-500 border-t border-gray-200/60 mt-auto">
+                        <span class="text-amber-700 font-semibold"><i class="fas fa-heart mr-1"></i> Comfort Food</span>
+                        <button onclick="openModal('reservation-modal')" class="text-aegean-greek hover:underline font-bold">Order at Table</button>
+                    </div>
+                </div>
+
+                <!-- SEAFOOD -->
+                <div class="menu-item seafood hidden bg-warmSand rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=600&q=80" alt="Whole Mediterranean Branzino" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-cinzel text-xl font-bold text-aegean-deep">Whole Aegean Branzino</h3>
+                                <span class="font-bold text-terracotta text-lg">$34.95</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Whole sea bass flown in fresh from the Mediterranean, char-grilled with olive oil, wild capers, and fresh lemon wedge. Served with wild greens (Horta).</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex justify-between items-center text-xs text-gray-500 border-t border-gray-200/60 mt-auto">
+                        <span class="text-emerald-700 font-semibold"><i class="fas fa-water mr-1"></i> Daily Catch</span>
+                        <button onclick="openModal('reservation-modal')" class="text-aegean-greek hover:underline font-bold">Order at Table</button>
+                    </div>
+                </div>
+
+                <div class="menu-item seafood hidden bg-warmSand rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=600&q=80" alt="Garlic Lemon Shrimp Ouzo" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-cinzel text-xl font-bold text-aegean-deep">Lemon Ouzo Jumbo Shrimp</h3>
+                                <span class="font-bold text-terracotta text-lg">$28.50</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Jumbo wild shrimp flambéed with Greek Ouzo, fresh garlic, tomatoes, oregano, and crumbled feta over herb rice pilaf.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex justify-between items-center text-xs text-gray-500 border-t border-gray-200/60 mt-auto">
+                        <span class="text-aegean-greek font-semibold"><i class="fas fa-cocktail mr-1"></i> Ouzo Infused</span>
+                        <button onclick="openModal('reservation-modal')" class="text-aegean-greek hover:underline font-bold">Order at Table</button>
+                    </div>
+                </div>
+
+                <!-- DESSERTS -->
+                <div class="menu-item desserts hidden bg-warmSand rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=600&q=80" alt="Homemade Honey Baklava" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="font-cinzel text-xl font-bold text-aegean-deep">Homemade Honey Baklava</h3>
+                                <span class="font-bold text-terracotta text-lg">$9.50</span>
+                            </div>
+                            <p class="text-gray-600 text-sm mb-4">Golden crispy layers of phyllo, packed with crushed walnuts, cinnamon, and soaked in our organic orange-blossom honey syrup.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex justify-between items-center text-xs text-gray-500 border-t border-gray-200/60 mt-auto">
+                        <span class="text-amber-700 font-semibold"><i class="fas fa-star mr-1"></i> House Specialty</span>
+                        <button onclick="openModal('reservation-modal')" class="text-aegean-greek hover:underline font-bold">Order at Table</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Full Menu PDF Download Banner -->
+            <div class="mt-12 text-center">
+                <a href="#order" class="inline-flex items-center space-x-2 text-aegean-greek hover:text-terracotta font-bold text-sm bg-aegean-50 px-6 py-3 rounded-full border border-aegean-100 transition shadow-sm">
+                    <i class="fas fa-utensils"></i>
+                    <span>View Full Lunch, Dinner, & Drinks Menu</span>
+                    <i class="fas fa-chevron-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRIVATE EVENTS & CATERING ESTIMATOR SECTION -->
+    <section id="catering" class="py-20 bg-darkMarble text-white relative">
+        <!-- Background Pattern Decor -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Info Column -->
+                <div>
+                    <span class="text-goldLeaf font-bold text-sm tracking-widest uppercase"><i class="fas fa-glass-cheers mr-2"></i> Celebrations & Catering</span>
+                    <h2 class="font-cinzel text-3xl sm:text-5xl font-extrabold text-white mt-2 mb-6">Host Your Next Event With Us</h2>
+                    <p class="text-gray-300 text-base leading-relaxed mb-6">
+                        Planning a birthday party, corporate dinner, holiday gathering, or family christening? Nick’s Bistro offers full-service private party hosting in our intimate dining room, as well as off-site catering trays delivered straight to your home or office.
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-aegean-greek/40 border border-goldLeaf flex items-center justify-center text-goldLeaf font-bold">1</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Tailored Greek Buffets & Prix Fixe</h4>
+                                <p class="text-xs text-gray-400">Customized menu items suited to every palate and dietary requirement.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-aegean-greek/40 border border-goldLeaf flex items-center justify-center text-goldLeaf font-bold">2</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Full Bar Packages</h4>
+                                <p class="text-xs text-gray-400">Greek wines, craft beers, and signature Mediterranean cocktails.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 rounded-full bg-aegean-greek/40 border border-goldLeaf flex items-center justify-center text-goldLeaf font-bold">3</div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Seamless Planning</h4>
+                                <p class="text-xs text-gray-400">Mario & Alfred handle every fine detail from decor setup to service.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="tel:7185446425" class="inline-flex items-center space-x-3 bg-terracotta hover:bg-amber-700 text-white font-bold px-6 py-3 rounded-full transition shadow-lg">
+                        <i class="fas fa-phone"></i>
+                        <span>Speak With Event Planner: (718) 544-6425</span>
+                    </a>
+                </div>
+
+                <!-- Interactive Catering Cost Estimator Widget -->
+                <div class="bg-white/5 border border-goldLeaf/30 p-6 sm:p-8 rounded-3xl backdrop-blur-xl shadow-2xl">
+                    <h3 class="font-cinzel text-2xl font-bold text-goldLeaf mb-2 flex items-center">
+                        <i class="fas fa-calculator mr-3 text-terracotta"></i> Quick Catering Estimator
+                    </h3>
+                    <p class="text-xs text-gray-400 mb-6">Get a instant ballpark estimate for your party or catering package.</p>
+
+                    <form id="estimator-form" oninput="calculateCatering()" class="space-y-5">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Estimated Number of Guests</label>
+                            <div class="flex items-center space-x-4">
+                                <input type="range" id="guest-count" min="10" max="100" value="25" class="w-full accent-goldLeaf cursor-pointer">
+                                <span id="guest-count-display" class="font-bold text-xl text-white min-w-[50px]">25</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Package Type</label>
+                            <select id="package-type" class="w-full bg-darkMarble border border-gray-700 text-white rounded-xl p-3 text-sm focus:border-goldLeaf focus:outline-none">
+                                <option value="28">Classic Greek Mezze & Gyros ($28/person)</option>
+                                <option value="42" selected>Mediterranean Feast - Souvlaki & Seafood ($42/person)</option>
+                                <option value="58">Royal Aegean Dinner + Wine Bar ($58/person)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold uppercase tracking-wider text-gray-300 mb-2">Event Style</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <label class="flex items-center p-3 border border-gray-700 rounded-xl bg-darkMarble cursor-pointer text-xs">
+                                    <input type="radio" name="event-style" value="offsite" checked class="accent-goldLeaf mr-2">
+                                    <span>Catering Drop-Off</span>
+                                </label>
+                                <label class="flex items-center p-3 border border-gray-700 rounded-xl bg-darkMarble cursor-pointer text-xs">
+                                    <input type="radio" name="event-style" value="inhouse" class="accent-goldLeaf mr-2">
+                                    <span>In-Bistro Private Party</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="bg-aegean-greek/30 p-4 rounded-2xl border border-goldLeaf/30 text-center">
+                            <span class="text-xs text-gray-300 uppercase tracking-wider block mb-1">Estimated Investment</span>
+                            <span id="total-estimate" class="font-cinzel text-3xl font-extrabold text-goldLeaf">$1,050</span>
+                            <span class="text-[10px] text-gray-400 block mt-1">*Excludes tax and gratuity. Subject to final menu selection.</span>
+                        </div>
+
+                        <button type="button" onclick="openCateringModal()" class="w-full bg-aegean-greek hover:bg-aegean-800 text-white font-bold py-3.5 rounded-xl shadow-lg transition border border-goldLeaf/40">
+                            Request Official Proposal
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS & REVIEWS -->
+    <section id="reviews" class="py-20 bg-warmSand">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-terracotta font-bold text-sm tracking-widest uppercase">Loved by Forest Hills & Beyond</span>
+                <h2 class="font-cinzel text-3xl sm:text-4xl font-extrabold text-aegean-deep mt-2 mb-4">What Our Guests Say</h2>
+                <div class="flex items-center justify-center space-x-1 text-goldLeaf text-lg">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <span class="text-xs text-gray-600 font-bold ml-2">(4.8 Stars on Yelp & Google)</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between relative">
+                    <i class="fas fa-quote-right text-aegean-50 text-5xl absolute top-6 right-6 z-0"></i>
+                    <div class="relative z-10">
+                        <div class="flex text-amber-400 text-sm mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 text-sm italic leading-relaxed mb-6">
+                            "Nick’s is some of the best Greek food I have ever had! The hummus is good, and it comes with very warm pita. The grilled octopus comes with chickpeas in a balanced balsamic olive oil sauce. The baklava is so nutty and honey-sweet!"
+                        </p>
+                    </div>
+                    <div class="relative z-10 border-t border-gray-100 pt-4 flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Amanda M.</h4>
+                            <span class="text-xs text-gray-400">Verified Yelp Reviewer</span>
+                        </div>
+                        <span class="text-xs bg-red-50 text-red-600 px-2 py-1 rounded font-bold">Yelp</span>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between relative">
+                    <i class="fas fa-quote-right text-aegean-50 text-5xl absolute top-6 right-6 z-0"></i>
+                    <div class="relative z-10">
+                        <div class="flex text-amber-400 text-sm mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 text-sm italic leading-relaxed mb-6">
+                            "It's impossible to go wrong at Nick's Bistro, one of the best run restaurants I've ever visited. The spicy pasta special is a masterpiece. Falafel is spot-on, crispy & fresh. No matter what, you must not miss their legendary lemon potatoes!"
+                        </p>
+                    </div>
+                    <div class="relative z-10 border-t border-gray-100 pt-4 flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Jonathan K.</h4>
+                            <span class="text-xs text-gray-400">Local Guide</span>
+                        </div>
+                        <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded font-bold">Google</span>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between relative">
+                    <i class="fas fa-quote-right text-aegean-50 text-5xl absolute top-6 right-6 z-0"></i>
+                    <div class="relative z-10">
+                        <div class="flex text-amber-400 text-sm mb-4">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-gray-700 text-sm italic leading-relaxed mb-6">
+                            "I love the food! Mario and Alfred always welcome us like old friends. I enjoyed the outside patio dining on Metropolitan Ave so much. Definitely our favorite go-to neighborhood bistro!"
+                        </p>
+                    </div>
+                    <div class="relative z-10 border-t border-gray-100 pt-4 flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-gray-900 text-sm">Bing T.</h4>
+                            <span class="text-xs text-gray-400">Forest Hills Resident</span>
+                        </div>
+                        <span class="text-xs bg-red-50 text-red-600 px-2 py-1 rounded font-bold">Yelp</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION, HOURS & CONTACT SECTION -->
+    <section id="contact" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                
+                <!-- Hours & Info Card (5 cols) -->
+                <div class="lg:col-span-5 bg-aegean-deep text-white p-8 sm:p-10 rounded-3xl shadow-xl border border-goldLeaf/30 flex flex-col justify-between">
+                    <div>
+                        <span class="text-goldLeaf text-xs font-bold uppercase tracking-widest block mb-2">Visit Us</span>
+                        <h2 class="font-cinzel text-3xl font-bold mb-6 text-white">Hours & Location</h2>
+
+                        <!-- Address -->
+                        <div class="flex items-start space-x-4 mb-8">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-goldLeaf flex-shrink-0 mt-1">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-base text-white">Nick's Bistro</h4>
+                                <p class="text-gray-300 text-sm">104-20 Metropolitan Ave</p>
+                                <p class="text-gray-300 text-sm">Forest Hills, NY 11375</p>
+                                <a href="https://maps.google.com/?q=104-20+Metropolitan+Ave+Forest+Hills+NY+11375" target="_blank" class="inline-block mt-2 text-xs font-bold text-goldLeaf hover:underline">Open in Google Maps <i class="fas fa-external-link-alt ml-1"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- Hours Table -->
+                        <div class="space-y-2 border-t border-white/10 pt-6 mb-8">
+                            <h4 class="font-bold text-sm text-goldLeaf uppercase tracking-wider mb-3">Opening Hours</h4>
+                            <div class="flex justify-between text-sm py-1 border-b border-white/5">
+                                <span class="text-gray-300">Mon - Thu</span>
+                                <span class="font-semibold text-white">11:30 AM – 10:00 PM</span>
+                            </div>
+                            <div class="flex justify-between text-sm py-1 border-b border-white/5">
+                                <span class="text-gray-300">Friday</span>
+                                <span class="font-semibold text-white">11:30 AM – 10:30 PM</span>
+                            </div>
+                            <div class="flex justify-between text-sm py-1 border-b border-white/5">
+                                <span class="text-gray-300">Saturday</span>
+                                <span class="font-semibold text-white">11:00 AM – 10:30 PM</span>
+                            </div>
+                            <div class="flex justify-between text-sm py-1">
+                                <span class="text-gray-300">Sunday</span>
+                                <span class="font-semibold text-white">11:00 AM – 9:30 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct Contact -->
+                    <div class="pt-6 border-t border-white/10 flex flex-col sm:flex-row gap-4">
+                        <a href="tel:7185446425" class="flex-1 bg-aegean-greek hover:bg-aegean-800 text-center py-3 rounded-xl font-bold text-sm transition">
+                            <i class="fas fa-phone mr-2"></i> (718) 544-6425
+                        </a>
+                        <a href="mailto:info@nicksbistro.com" class="flex-1 bg-white/10 hover:bg-white/20 text-center py-3 rounded-xl font-bold text-sm transition">
+                            <i class="fas fa-envelope mr-2"></i> Email Us
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Map Frame & Newsletter (7 cols) -->
+                <div class="lg:col-span-7 flex flex-col space-y-8">
+                    <!-- Interactive Map Container -->
+                    <div class="rounded-3xl overflow-hidden shadow-lg border border-gray-200 h-80 lg:h-full relative bg-gray-100">
+                        <iframe 
+                            title="Nick's Bistro Location Map"
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; min-height: 320px;" 
+                            loading="lazy" 
+                            allowfullscreen 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.821382903212!2d-73.85406732342594!3d40.71424917139269!2m3!1f0!2f0!3f0!2m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25e2e604f3299%3A0x7d67b2d5612f0e0f!2s104-20%20Metropolitan%20Ave%2C%20Forest%20Hills%2C%20NY%2011375!5e0!3m2!1sen!2sus!4v1700000000000">
+                        </iframe>
+                    </div>
+
+                    <!-- Newsletter Sign Up Card -->
+                    <div class="bg-warmSand p-8 rounded-3xl border border-goldLeaf/30 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+                        <div>
+                            <h3 class="font-cinzel text-xl font-bold text-aegean-deep">Join the Bistro Club</h3>
+                            <p class="text-xs text-gray-600">Get secret chef specials, birthday treats, and wine pairing invitations.</p>
+                        </div>
+                        <form onsubmit="handleNewsletter(event)" class="flex w-full sm:w-auto gap-2">
+                            <input type="email" required placeholder="Enter your email" class="px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-aegean-greek flex-1">
+                            <button type="submit" class="bg-terracotta hover:bg-amber-700 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition flex-shrink-0">
+                                Join
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-darkMarble text-white pt-16 pb-12 border-t border-goldLeaf/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                
+                <!-- Brand Info -->
+                <div class="md:col-span-1">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-aegean-greek flex items-center justify-center text-white border border-goldLeaf">
+                            <i class="fas fa-monument text-goldLeaf"></i>
+                        </div>
+                        <span class="font-cinzel text-xl font-bold text-white">NICK'S BISTRO</span>
+                    </div>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-6">
+                        Forest Hills' favorite Greek-American bistro. Serving authentic Mediterranean cuisine, fine wine, and warm hospitality since day one.
+                    </p>
+                    <!-- Social Icons -->
+                    <div class="flex space-x-3">
+                        <a href="https://instagram.com" target="_blank" class="w-9 h-9 rounded-full bg-white/5 hover:bg-aegean-greek flex items-center justify-center text-gray-300 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" class="w-9 h-9 rounded-full bg-white/5 hover:bg-aegean-greek flex items-center justify-center text-gray-300 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://yelp.com" target="_blank" class="w-9 h-9 rounded-full bg-white/5 hover:bg-terracotta flex items-center justify-center text-gray-300 hover:text-white transition">
+                            <i class="fab fa-yelp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div>
+                    <h4 class="font-cinzel text-sm font-bold text-goldLeaf uppercase tracking-wider mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-xs text-gray-300">
+                        <li><a href="#about" class="hover:text-goldLeaf transition">Our Story & Owners</a></li>
+                        <li><a href="#menu" class="hover:text-goldLeaf transition">Greek Specialties</a></li>
+                        <li><a href="#menu" class="hover:text-goldLeaf transition">Wine & Cocktail Bar</a></li>
+                        <li><a href="#catering" class="hover:text-goldLeaf transition">Private Party Hosting</a></li>
+                        <li><a href="#catering" class="hover:text-goldLeaf transition">Catering Estimator</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Summary -->
+                <div>
+                    <h4 class="font-cinzel text-sm font-bold text-goldLeaf uppercase tracking-wider mb-4">Find Us</h4>
+                    <p class="text-xs text-gray-300 mb-2">104-20 Metropolitan Ave<br>Forest Hills, NY 11375</p>
+                    <p class="text-xs text-gray-300 mb-2"><strong>Phone:</strong> (718) 544-6425</p>
+                    <p class="text-xs text-gray-300"><strong>Email:</strong> info@nicksbistro.com</p>
+                </div>
+
+                <!-- Web Manager Badge & Pitch Note -->
+                <div class="bg-white/5 p-4 rounded-2xl border border-white/10 text-xs text-gray-400 flex flex-col justify-between">
+                    <div>
+                        <span class="text-goldLeaf font-bold block mb-1">PROPOSED REDESIGN</span>
+                        <p class="text-[11px] leading-relaxed">Designed to increase online table reservations, highlight high-margin catering orders, and elevate the bistro's digital brand image.</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-white/10 text-[10px] text-gray-500">
+                        Ready to upgrade? Contact your web manager today.
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; <span id="current-year"></span> Nick's Bistro. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-gray-300">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-300">Accessibility Statement</a>
+                    <a href="#" class="hover:text-gray-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- RESERVATION MODAL -->
+    <div id="reservation-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl border border-goldLeaf/40">
+            <button onclick="closeModal('reservation-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-aegean-greek text-white rounded-full flex items-center justify-center mx-auto mb-3 shadow border border-goldLeaf">
+                    <i class="fas fa-calendar-alt text-goldLeaf"></i>
+                </div>
+                <h3 class="font-cinzel text-2xl font-bold text-aegean-deep">Book a Table</h3>
+                <p class="text-xs text-gray-500">Join us at Nick's Bistro for an authentic Greek experience.</p>
+            </div>
+
+            <form onsubmit="handleReservationSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Full Name</label>
+                    <input type="text" required placeholder="e.g. Maria Papas" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:border-aegean-greek focus:outline-none">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Date</label>
+                        <input type="date" required class="w-full px-3 py-2.5 rounded-xl border border-gray-300 text-sm focus:border-aegean-greek focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Time</label>
+                        <select required class="w-full px-3 py-2.5 rounded-xl border border-gray-300 text-sm focus:border-aegean-greek focus:outline-none">
+                            <option>6:00 PM</option>
+                            <option>6:30 PM</option>
+                            <option>7:00 PM</option>
+                            <option>7:30 PM</option>
+                            <option>8:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Guests</label>
+                        <select required class="w-full px-3 py-2.5 rounded-xl border border-gray-300 text-sm focus:border-aegean-greek focus:outline-none">
+                            <option>2 People</option>
+                            <option>3 People</option>
+                            <option>4 People</option>
+                            <option>5+ People</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Phone Number</label>
+                        <input type="tel" required placeholder="(718) 000-0000" class="w-full px-3 py-2.5 rounded-xl border border-gray-300 text-sm focus:border-aegean-greek focus:outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Special Requests</label>
+                    <textarea rows="2" placeholder="Seating preference, birthday celebration, dietary needs..." class="w-full px-3 py-2 rounded-xl border border-gray-300 text-sm focus:border-aegean-greek focus:outline-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-aegean-greek hover:bg-aegean-900 text-white font-bold py-3.5 rounded-xl shadow-lg transition">
+                    Confirm Reservation Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CATERING MODAL -->
+    <div id="catering-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl border border-goldLeaf/40">
+            <button onclick="closeModal('catering-modal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-700 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-terracotta text-white rounded-full flex items-center justify-center mx-auto mb-3 shadow">
+                    <i class="fas fa-glass-cheers text-white text-lg"></i>
+                </div>
+                <h3 class="font-cinzel text-2xl font-bold text-aegean-deep">Request Catering Proposal</h3>
+                <p class="text-xs text-gray-500">Mario & Alfred will contact you within 24 hours.</p>
+            </div>
+
+            <form onsubmit="handleCateringSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Contact Name</label>
+                    <input type="text" required placeholder="Your full name" class="w-full px-4 py-2.5 rounded-xl border border-gray-300 text-sm focus:border-aegean-greek focus:outline-none">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Email</label>
+                        <input type="email" required placeholder="name@example.com" class="w-full px-3 py-2.5 rounded-xl border border-gray-300 text-sm focus:border-aegean-greek focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Phone</label>
+                        <input type="tel" required placeholder="(718) 000-0000" class="w-full px-3 py-2.5 rounded-xl border border-gray-300 text-sm focus:border-aegean-greek focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="bg-warmSand p-3 rounded-xl border border-goldLeaf/30 text-xs">
+                    <div class="flex justify-between font-bold text-aegean-deep">
+                        <span>Selected Guest Count:</span>
+                        <span id="modal-guest-count">25</span>
+                    </div>
+                    <div class="flex justify-between font-bold text-terracotta mt-1">
+                        <span>Estimated Total:</span>
+                        <span id="modal-total-cost">$1,050</span>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold uppercase text-gray-700 mb-1">Tell Us About Your Event</label>
+                    <textarea rows="3" placeholder="Event type (Birthday, Wedding, Corporate), date, location..." class="w-full px-3 py-2 rounded-xl border border-gray-300 text-sm focus:border-aegean-greek focus:outline-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-terracotta hover:bg-amber-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition">
+                    Send Catering Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Toggle mobile navigation menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Toggle pitch banner details
+        function togglePitchDetails() {
+            const details = document.getElementById('pitch-details');
+            details.classList.toggle('hidden');
+        }
+
+        // Filter Menu Categories
+        function filterMenu(category) {
+            // Update active tab styles
+            const tabs = document.querySelectorAll('.menu-tab');
+            tabs.forEach(tab => {
+                if (tab.getAttribute('data-cat') === category) {
+                    tab.classList.add('bg-aegean-greek', 'text-white', 'shadow-md', 'border', 'border-goldLeaf/30');
+                    tab.classList.remove('bg-gray-100', 'text-gray-700');
+                } else {
+                    tab.classList.remove('bg-aegean-greek', 'text-white', 'shadow-md', 'border', 'border-goldLeaf/30');
+                    tab.classList.add('bg-gray-100', 'text-gray-700');
+                }
+            });
+
+            // Filter items
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                if (item.classList.contains(category)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+
+        // Catering Estimator logic
+        function calculateCatering() {
+            const guests = parseInt(document.getElementById('guest-count').value);
+            const pricePerPerson = parseInt(document.getElementById('package-type').value);
+            
+            document.getElementById('guest-count-display').textContent = guests;
+            
+            const total = guests * pricePerPerson;
+            const formattedTotal = '$' + total.toLocaleString();
+            
+            document.getElementById('total-estimate').textContent = formattedTotal;
+            document.getElementById('modal-guest-count').textContent = guests + ' guests';
+            document.getElementById('modal-total-cost').textContent = formattedTotal;
+        }
+
+        // Modal triggers
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        function openCateringModal() {
+            calculateCatering();
+            openModal('catering-modal');
+        }
+
+        // Form handlers with friendly notifications
+        function handleReservationSubmit(e) {
+            e.preventDefault();
+            closeModal('reservation-modal');
+            showToast('Opa! Your reservation request has been submitted. Nick\'s Bistro will confirm shortly!');
+        }
+
+        function handleCateringSubmit(e) {
+            e.preventDefault();
+            closeModal('catering-modal');
+            showToast('Thank you! Mario & Alfred have received your catering inquiry and will reach out today.');
+        }
+
+        function handleNewsletter(e) {
+            e.preventDefault();
+            showToast('Welcome to the Nick\'s Bistro family! Check your inbox soon.');
+            e.target.reset();
+        }
+
+        // Toast notification system
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-5 right-5 bg-aegean-deep text-white px-6 py-4 rounded-2xl shadow-2xl z-50 flex items-center space-x-3 border border-goldLeaf transform transition-all duration-300 translate-y-10 opacity-0';
+            toast.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-aegean-greek flex items-center justify-center text-goldLeaf flex-shrink-0">
+                    <i class="fas fa-check"></i>
+                </div>
+                <span class="text-sm font-semibold">${message}</span>
+            `;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 100);
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
